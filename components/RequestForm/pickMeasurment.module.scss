@@ -1,0 +1,42 @@
+
+
+.form {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  .title {
+    margin-bottom: 30px;
+    font-size: 28px;
+    font-weight: 700;
+    @media (max-width: 1071px) {
+      font-size: 20px;
+    }
+  }
+  .calendar, .fileUploader {
+    min-width: 40%;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+  }
+  .fileUploader {
+    min-width: 40%;
+    .title {
+      margin-bottom: 50px;
+      font-size: 28px;
+      font-weight: 700;
+      @media (max-width: 1071px) {
+        font-size: 20px;
+      }
+    }
+  }
+
+}
+
+.additional {
+  margin-top: 40px;
+  .body {
+    //width: 50%;
+  }
+}

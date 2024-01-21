@@ -1,0 +1,10 @@
+{
+  "allServices": "Всі послуги",
+  "tariffs": "Тарифи",
+  "additionServices": "Додаткові послуги",
+  "servicesComparison": "Порівняння тарифів",
+  "nameOfTariffOrService": "Назва тарифу / послуги",
+  "basic": "Базовий",
+  "standard": "Стандарт",
+  "premium": "Преміум"
+}

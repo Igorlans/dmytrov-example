@@ -1,0 +1,260 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Admin {
+  id       String @id @default(cuid())
+  password String
+}
+
+model Question {
+  id       String  @id @default(cuid())
+  title    String
+  descr    String
+  order    Int?
+  descr_ru String?
+  title_ru String?
+}
+
+model Request {
+  id           String        @id @default(cuid())
+  square       String
+  type         BuildingType
+  address      String
+  street       String
+  homeNumber   String
+  comment      String?
+  date         String
+  userId       String
+  createdAt    DateTime      @default(now())
+  status       RequestStatus @default(NEW)
+  tariffId     String?
+  questionary  Json?
+  persisted    Json?
+  adminComment String?
+  files        Json?
+  Tariff       Tariffes?     @relation(fields: [tariffId], references: [id])
+  user         User          @relation(fields: [userId], references: [id])
+}
+
+model Services {
+  id              String            @id @default(cuid())
+  title           String
+  descr           String?
+  price           String
+  order           Int?
+  image           Json?
+  content         Json?
+  slug            String
+  descr_ru        String?
+  title_ru        String?
+  label           String?           @default("грн")
+  ServicesRequest ServicesRequest[]
+}
+
+model ServicesRequest {
+  id         String   @id @default(cuid())
+  userId     String
+  servicesId String
+  createdAt  DateTime @default(now())
+  Services   Services @relation(fields: [servicesId], references: [id], onDelete: Cascade)
+  User       User     @relation(fields: [userId], references: [id])
+}
+
+model Tariffes {
+  id                         String                       @id @default(cuid())
+  order                      Int?
+  title                      String
+  subTitle                   String
+  price                      String
+  text                       String
+  textMob                    String
+  image                      Json?
+  activated                  Boolean                      @default(true)
+  TariffPlan                 Json?
+  subTitle_ru                String?
+  text_ru                    String?
+  title_ru                   String?
+  requests                   Request[]
+  QuestionaryOptionTable     QuestionaryOptionTable[]     @relation("QuestionaryOptionTableToTariffes")
+  QuestionaryQuestion        QuestionaryQuestion[]        @relation("QuestionaryQuestionToTariffes")
+  QuestionaryRoomOptionTable QuestionaryRoomOptionTable[] @relation("QuestionaryRoomOptionTableToTariffes")
+}
+
+model Account {
+  id                String  @id @default(cuid())
+  userId            String
+  type              String
+  provider          String
+  providerAccountId String
+  refresh_token     String?
+  access_token      String?
+  expires_at        Int?
+  token_type        String?
+  scope             String?
+  id_token          String?
+  session_state     String?
+  user              User    @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([provider, providerAccountId])
+}
+
+model User {
+  id              String            @id @default(cuid())
+  name            String?
+  email           String?           @unique
+  phone           String
+  emailVerified   DateTime?
+  image           String?
+  skype           String?
+  password        String?
+  fatherName      String?
+  surname         String?
+  createdAt       String?
+  accounts        Account[]
+  requests        Request[]
+  ServicesRequest ServicesRequest[]
+}
+
+model VerificationToken {
+  identifier String
+  token      String   @unique
+  expires    DateTime
+
+  @@unique([identifier, token])
+}
+
+model TariffComparison {
+  id    String @id @default(cuid())
+  table Json?
+}
+
+model QuestionaryOptionTable {
+  id          String         @id @default(cuid())
+  text        String
+  hint        String?
+  order       Int?
+  isActive    Boolean        @default(true)
+  type        BuildingType[]
+  TableOption TableOption[]
+  Tariffes    Tariffes[]     @relation("QuestionaryOptionTableToTariffes")
+}
+
+model QuestionaryQuestion {
+  id       String         @id @default(cuid())
+  text     String
+  hint     String?
+  order    Int?
+  isActive Boolean        @default(true)
+  type     BuildingType[]
+  Tariffes Tariffes[]     @relation("QuestionaryQuestionToTariffes")
+}
+
+model QuestionaryRoomOptionTable {
+  id          String         @id @default(cuid())
+  text        String
+  order       Int?
+  isActive    Boolean        @default(true)
+  type        BuildingType[]
+  TableOption TableOption[]
+  Tariffes    Tariffes[]     @relation("QuestionaryRoomOptionTableToTariffes")
+}
+
+model Room {
+  id            String          @id @default(cuid())
+  name          String
+  image         Json
+  order         Int?
+  isActive      Boolean         @default(true)
+  RoomFurniture RoomFurniture[]
+}
+
+model RoomFurniture {
+  id         String  @id @default(cuid())
+  name       String
+  image      Json
+  order      Int?
+  isActive   Boolean @default(true)
+  roomId     String?
+  hint       String?
+  articleUrl String?
+  Room       Room?   @relation(fields: [roomId], references: [id], onDelete: Cascade)
+}
+
+model TableOption {
+  id                         String                      @id @default(cuid())
+  text                       String
+  articleUrl                 String?
+  image                      Json?
+  order                      Int?
+  isActive                   Boolean                     @default(true)
+  roomTableId                String?
+  tableId                    String?
+  QuestionaryRoomOptionTable QuestionaryRoomOptionTable? @relation(fields: [roomTableId], references: [id], onDelete: Cascade)
+  QuestionaryOptionTable     QuestionaryOptionTable?     @relation(fields: [tableId], references: [id], onDelete: Cascade)
+}
+
+model Post {
+  id             String   @id @default(cuid())
+  title          String
+  description    String?
+  createdAt      String
+  image          Json?
+  content        Json?
+  slug           String
+  description_ru String?
+  title_ru       String?
+  Review         Review[]
+}
+
+model Seo {
+  id             String  @id @default(cuid())
+  page           String  @unique
+  title          String?
+  title_ru       String?
+  description    String?
+  description_ru String?
+  keywords       String?
+  seoTitle       String?
+  seoText        String?
+  seoText_ru     String?
+  seoTitle_ru    String?
+  edited         Boolean @default(true)
+  hideSeoText    Boolean @default(false)
+}
+
+model Review {
+  id     String  @id @default(cuid())
+  rating Float
+  postId String?
+  Post   Post?   @relation(fields: [postId], references: [id])
+}
+
+model Privacy {
+  id       String  @id @default(cuid())
+  title    String
+  title_ru String?
+  descr    String
+  descr_ru String?
+}
+
+enum RequestStatus {
+  NEW
+  AWAIT_MEASURE
+  IN_WORK
+  IN_ORDER
+  PAUSED
+  DONE
+  REJECTED
+}
+
+enum BuildingType {
+  HOUSE
+  APARTMENT
+  COMMERCE
+}

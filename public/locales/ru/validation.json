@@ -1,0 +1,32 @@
+{
+    "error": "Ошибка",
+    "requiredLine": "Поле обязательно",
+    "wrongFormat": "Неправильный формат",
+    "wrongFormatLenght": "Код должен содержать минимум 8 символов",
+
+    "userNotFound": "Пользователя с таким email не существует",
+    "userEditLoading": "Редактирование пользователя",
+    "userEditSuccess": "Пользователь отредактирован",
+    "userEditError": "Ошибка редактирования пользователя",
+    "sendCode": "Код подтверждения отправлен на почту",
+
+    "checkingCode": "Проверяем код",
+    "checkingSuccess": "Успех! Теперь вы можете изменить пароль",
+    "checkingCodeError": "Неверный код подтверждения",
+
+    "passwordChanging": "Изменение пароля",
+    "passwordChangingError": "Ошибка изменения пароля",
+    "passwordChangingSuccess": "Пароль изменен",
+
+    "passwordMatch": "Пароли должны совпадать",
+
+    "userLogOutSuccess": "Вы вышли из учетной записи",
+    "loginSuccess": "Вход успешный",
+
+    "orderCreating": "Создание заявки",
+    "orderCreatingSuccess": "Заявка создана",
+    "orderCreatingError": "Нужно согласиться с политикой конфиденциальности",
+
+    "thanksForReview": "Спасибо за отзыв",
+    "reviewSaving": "Сохранение отзыва"
+}

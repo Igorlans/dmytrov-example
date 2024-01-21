@@ -1,0 +1,5 @@
+User-agent: *
+Disallow: /questionary/
+Disallow: /accountpage/
+Allow: /images/public/
+Sitemap: https://www.dmytrov.com.ua/sitemap.xml

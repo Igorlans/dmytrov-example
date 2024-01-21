@@ -1,0 +1,47 @@
+.checkbox {
+  &-box {
+    &-input {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      overflow: hidden;
+      clip: rect(0 0 0 0);
+
+      &:checked + .aside-popup__check-box-style::before {
+        content: "";
+        position: absolute;
+        width: 14px;
+        height: 14px;
+        background: #e55733;
+        border-radius: 5px;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+      }
+    }
+
+    &-label {
+      position: relative;
+      cursor: pointer;
+      padding-left: 40px;
+      font-size: 14px;
+      line-height: 16px;
+      color: #9a9a9a;
+      margin: 38px 0 51px;
+      display: inline-block;
+
+      &-account {
+        line-height: 25px;
+      }
+    }
+
+    &-style {
+      position: absolute;
+      width: 24px;
+      height: 24px;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      margin-left: -40px;
+    }
+  }
+}

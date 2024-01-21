@@ -1,0 +1,51 @@
+{
+  "allQuestionsButton": "Всі питання",
+  "blog": "Блог",
+  "calculateCost": "Розрахуйте вартість",
+  "calculateTrueCost": "Прорахувати оптимальну вартість",
+  "footerConfidentiality": "Політика конфіденційності",
+  "footerContact": "Контакт",
+  "footerContacts": "Контакти",
+  "footerRightsReserved": "Всі права захищені",
+  "haveQuestionButton": "У вас є запитання?",
+  "navItemHome": "Головна",
+  "orderProjectButton": "Замовити проект",
+  "questions": "Питання та відповіді",
+  "services": "Послуги",
+  "servicesDesign": "Дизайн проект",
+  "servicesProject": "Технічний проект",
+  "servicesSupervision": "Авторський нагляд",
+  "viewButton": "Переглянути",
+  "viewExampleButton": "Переглянути приклад",
+  "readMore": "Читаті далі",
+  "nextStepButton": "Далі",
+  "prevStepButton": "Назад",
+  "createOrder": "Створити заявку",
+
+  "droverTitle": "Вхід в особистий кабінет",
+  "droverCreateAccount": "Ще не маєте облікового запису?",
+  "droverForgotPassword": "Забули пароль?",
+  "droverLogin": "Увійти",
+
+  "changePasswordButton": "Змiнити пароль",
+  "logOutButton": "Вийти",
+  "sendButton": "Відправити",
+
+  "h1mainPage": "Розробка технічного та дизайнерського проекту",
+
+  "toHomePage": "Повернутись на головну",
+  "getService": "Замовити послугу",
+
+  "price": "Вартість",
+
+  "tariffsSectionTitle": "Тарифи",
+
+  "more": "Детальніше",
+  "rates": "оцінок",
+  "yes": "Так",
+  "no": "Ні",
+  "areYouSureAddition": "Ви дійсно хочете замовити цю додаткову послугу?",
+
+  "additionalServices": "Додаткові послуги"
+
+}

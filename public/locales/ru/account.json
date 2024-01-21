@@ -1,0 +1,32 @@
+{
+    "orders": "Заявки",
+    "services": "Дополнительные услуги",
+
+    "formTitle": "Личные данные",
+    "formEdit": "Редактировать",
+    "formSave": "Сохранить",
+    "cancel": "Отменить",
+
+    "name": "Ваше имя",
+    "surname": "Ваша фамилия",
+    "byFuther": "Отчество",
+    "phone": "Мобильный номер телефона",
+
+    "changePassword": "Изменение пароля",
+    "changePasswordOld": "Старый пароль",
+    "changePasswordNew": "Новый пароль",
+    "changeButton": "Изменить",
+
+    "formFill": "Заполнить анкету",
+    "formFilled": "Анкета заполнена",
+    "formFilledProgres": "Заполнена",
+    "continue": "Продолжить",
+
+    "formStatusNew": "Новая заявка",
+    "formStatusPaused": "Выполнение приостановлено",
+    "formStatusQueue": "В очереди на исполнение",
+    "formStatusNull": "Аннулирован",
+    "formStatusDone": "Выполнено",
+    "formStatusPending": "В ожидании замеров",
+    "formStatusWork": "В работе"
+}

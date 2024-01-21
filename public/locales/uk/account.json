@@ -1,0 +1,32 @@
+{
+    "orders": "Заявки",
+    "services": "Додаткові послуги",
+
+    "formTitle": "Особисті данні",
+    "formEdit": "Редагувати",
+    "formSave": "Зберегти",
+    "cancel": "Відмінити",
+
+    "name": "Ваше ім'я",
+    "surname": "Ваше прізвище",
+    "byFuther": "По-батькові",
+    "phone": "Моб. номер телефону",
+
+    "changePassword": "Зміна паролю",
+    "changePasswordOld": "Старий пароль",
+    "changePasswordNew": "Новий пароль",
+    "changeButton": "Змінити",
+
+    "formFill": "Заповнити анкету",
+    "formFilled": "Анкета заповнена",
+    "formFilledProgres": "Заповнено",
+    "continue": "Продовжити",
+
+    "formStatusNew": "Нова заявка",
+    "formStatusPaused": "Виконання призупинено",
+    "formStatusQueue": "В черзі на виконання",
+    "formStatusNull": "Анульовано",
+    "formStatusDone": "Виконано",
+    "formStatusPending": "В очікуванні замірів",
+    "formStatusWork": "В роботі"
+}

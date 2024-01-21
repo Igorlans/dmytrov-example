@@ -1,0 +1,337 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = "postgresql://postgres:pnSAC9*32zYYDPd(@db.sqizuvuxpggdqvnjwnhs.supabase.co:5432/postgres"
+}
+
+model Store {
+  id              Int              @id @default(autoincrement())
+  shop_name       String           @db.VarChar(100)
+  logo            String?          @unique @db.VarChar(80)
+  description     String?
+  name            String           @db.VarChar(70)
+  phone           String           @db.VarChar(25)
+  email           String           @unique @db.VarChar(70)
+  password        String?          @db.VarChar(120)
+  prefer_viber    Boolean?
+  prefer_telegram Boolean?
+  prefer_phone    Boolean?
+  prefer_email    Boolean?
+  createdAt       DateTime         @default(now())
+  verified        Boolean          @default(false)
+  Addition        Addition[]
+  Buket           Buket[]
+  City            City[]
+  Decor           Decor[]
+  Delivery        Delivery[]
+  Employees       Employee[]
+  Payment         Payment[]
+  Review          Review[]
+  Store_flowers   Store_flower[]
+  Store_schedule  Store_schedule[]
+}
+
+model City {
+  id      Int    @id @default(autoincrement())
+  city    String
+  storeId Int
+  idCity  Store  @relation(fields: [storeId], references: [id])
+}
+
+model Delivery {
+  id                 Int              @id @default(autoincrement())
+  storeId            Int
+  cityId             Int
+  prefer_courier     Boolean?
+  time_delivery      String           @db.VarChar(20)
+  price_delivery     String           @db.VarChar(20)
+  free_delivery_from String?          @db.VarChar(20)
+  advanced_delivery  Boolean
+  divergence_time    String           @db.VarChar(70)
+  prefer_pickup      Boolean
+  prefer_in_time     Boolean
+  price_in_time      String           @db.VarChar(25)
+  repeat_delivery    Boolean
+  price_in_repeat    String           @db.VarChar(25)
+  idStore            Store            @relation(fields: [storeId], references: [id])
+  Delivery_rates     Delivery_rates[]
+  Pickup_list        Pickup_list[]
+}
+
+model Delivery_rates {
+  id                      Int      @id @default(autoincrement())
+  idDeliver               Int
+  time_from               String   @db.VarChar(10)
+  time_to                 String   @db.VarChar(10)
+  rate_price_delivery     String   @db.VarChar(10)
+  rate_prefer_free_from   Boolean?
+  rate_free_delivery_from String?  @db.VarChar(10)
+  deliveryId              Delivery @relation(fields: [idDeliver], references: [id])
+}
+
+model Pickup_list {
+  id                 Int      @id @default(autoincrement())
+  idDeliver          Int
+  address            String   @db.VarChar(50)
+  weekdays_time_from String   @db.VarChar(10)
+  weekdays_time_to   String   @db.VarChar(10)
+  weekend_time_from  String   @db.VarChar(10)
+  weekend_time_to    String   @db.VarChar(10)
+  type_payment       String   @db.VarChar(50)
+  deliveryId         Delivery @relation(fields: [idDeliver], references: [id])
+}
+
+model Payment {
+  id                    Int     @id @default(autoincrement())
+  storeId               Int
+  cityId                Int
+  prefer_cash           Boolean
+  prefer_prepayment     Boolean
+  sum_prepayment        Int?
+  prefer_all_payment    Boolean
+  payment_card          String? @db.VarChar(25)
+  fio_card              String? @db.VarChar(60)
+  name_bank             String  @db.VarChar(25)
+  prefer_payment_number Boolean
+  payment_number        String? @db.VarChar(50)
+  prefer_cashless       Boolean
+  prefer_crypto         Boolean
+  idStore               Store   @relation(fields: [storeId], references: [id])
+}
+
+model Store_schedule {
+  id                Int   @id @default(autoincrement())
+  storeId           Int
+  cityId            Int
+  order_schedule    Json
+  couriers_schedule Json
+  idStore           Store @relation(fields: [storeId], references: [id])
+}
+
+model Decor {
+  id             Int           @id @default(autoincrement())
+  storeId        Int
+  title          String        @db.VarChar(70)
+  characteristic String        @db.VarChar(100)
+  price          Int
+  comment        String?
+  prefer_stock   Boolean       @default(true)
+  buket_decors   BuketDecors[]
+  idStore        Store         @relation(fields: [storeId], references: [id])
+}
+
+model Addition {
+  id                Int             @id @default(autoincrement())
+  storeId           Int
+  name              String          @db.VarChar(60)
+  type_addition     String          @db.VarChar(40)
+  price             Int
+  prefer_free       Boolean
+  img_hash          String          @db.VarChar(50)
+  status_moderation String          @db.VarChar(50)
+  prefer_stock      Boolean         @default(true)
+  idStore           Store           @relation(fields: [storeId], references: [id])
+  buketsAddition    BuketAddition[]
+  OrderAddition     OrderAddition[]
+}
+
+model Buket {
+  id                Int             @id @default(autoincrement())
+  storeId           Int
+  category_buket    String          @db.VarChar(40)
+  name_buket        String          @db.VarChar(40)
+  size_width        String          @db.VarChar(10)
+  size_height       String          @db.VarChar(10)
+  time_build        String          @db.VarChar(10)
+  images_hash       Json
+  price             Int
+  prefer_stock      Boolean
+  status_moderation String          @db.VarChar(35)
+  createdAt         DateTime        @default(now())
+  idStore           Store           @relation(fields: [storeId], references: [id])
+  buket_addition    BuketAddition[]
+  buket_decors      BuketDecors[]
+  buket_flower      BuketFlower[]
+  occasions         BuketOccasion[]
+  Orders            Orders[]
+  reviews           Review[]
+  User              User[]          @relation("BuketToUser")
+}
+
+model BuketDecors {
+  id      Int   @id @default(autoincrement())
+  numbers Int
+  idBuket Int
+  idDecor Int
+  bukets  Buket @relation(fields: [idBuket], references: [id])
+  decors  Decor @relation(fields: [idDecor], references: [id])
+}
+
+model BuketAddition {
+  id             Int      @id @default(autoincrement())
+  number         Int
+  idBuket        Int
+  idAddition     Int
+  store_addition Addition @relation(fields: [idAddition], references: [id])
+  bukets         Buket    @relation(fields: [idBuket], references: [id])
+}
+
+model BuketFlower {
+  id             Int          @id @default(autoincrement())
+  idBuket        Int
+  number         Int
+  stroreFlowerId Int
+  bukets         Buket        @relation(fields: [idBuket], references: [id])
+  store_flowers  Store_flower @relation(fields: [stroreFlowerId], references: [id])
+}
+
+model Store_flower {
+  id           Int           @id @default(autoincrement())
+  country      String        @db.VarChar(50)
+  color        String
+  price        Int
+  variety      String?       @db.VarChar(30)
+  comment      String?
+  height       String        @db.VarChar(15)
+  prefer_stock Boolean       @default(true)
+  storeId      Int
+  flowerId     Int
+  buket_flower BuketFlower[]
+  flower       Flowers       @relation(fields: [flowerId], references: [id])
+  store        Store         @relation(fields: [storeId], references: [id])
+}
+
+model Flowers {
+  id            Int            @id @default(autoincrement())
+  title_ua      String         @db.VarChar(70)
+  title_ru      String         @db.VarChar(70)
+  Store_flowers Store_flower[]
+}
+
+model Occasion {
+  id     Int             @id @default(autoincrement())
+  name   String          @db.VarChar(40)
+  bukets BuketOccasion[]
+}
+
+model BuketOccasion {
+  id         Int      @id @default(autoincrement())
+  buketId    Int
+  occasionId Int
+  Buket      Buket    @relation(fields: [buketId], references: [id])
+  Occasion   Occasion @relation(fields: [occasionId], references: [id])
+}
+
+model Review {
+  id                Int      @id @default(autoincrement())
+  storeId           Int
+  id_buket          Int
+  photo_hash        String?  @db.VarChar(50)
+  describe          String?
+  stars             Int
+  buyer_name        String   @db.VarChar(70)
+  created_at        DateTime @default(now())
+  compliment        Json
+  status_moderation String?  @db.VarChar(60)
+  idBuket           Buket    @relation(fields: [id_buket], references: [id])
+  idStore           Store    @relation(fields: [storeId], references: [id])
+}
+
+model OrderAddition {
+  id         String   @id
+  text       String?  @db.Char(100)
+  orderId    String
+  additionId Int
+  Addition   Addition @relation(fields: [additionId], references: [id])
+  Orders     Orders   @relation(fields: [orderId], references: [id])
+}
+
+model Orders {
+  id                     String          @id
+  buketId                Int
+  cityId                 String
+  name                   String          @db.Char(50)
+  phone                  String          @db.Char(25)
+  email                  String          @db.Char(70)
+  delivery_type          String          @db.Char(50)
+  date                   String          @db.Char(20)
+  time                   String          @db.Char(10)
+  prefer_fast_delivery   String?         @db.Char(20)
+  prefer_specify_address Boolean?
+  address                String          @db.Char(70)
+  house_number           String          @db.Char(10)
+  apartment_number       String          @db.Char(10)
+  type_delivery          String          @db.Char(40)
+  type_recipient         String          @db.Char(25)
+  name_recipient         String?         @db.Char(50)
+  phone_recipient        String?         @db.Char(25)
+  prefer_photo_before    Boolean
+  type_payment           String          @db.Char(15)
+  OrderAddition          OrderAddition[]
+  Buket                  Buket           @relation(fields: [buketId], references: [id])
+}
+
+model Account {
+  id                String  @id @default(cuid())
+  userId            String
+  type              String
+  provider          String
+  providerAccountId String
+  refresh_token     String?
+  access_token      String?
+  expires_at        Int?
+  token_type        String?
+  scope             String?
+  id_token          String?
+  session_state     String?
+  user              User    @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([provider, providerAccountId])
+}
+
+model Session {
+  id           String   @id @default(cuid())
+  sessionToken String   @unique
+  userId       String
+  expires      DateTime
+  user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+model User {
+  id            String    @id @default(cuid())
+  name          String?
+  email         String?   @unique
+  emailVerified DateTime?
+  image         String?
+  password      String?
+  accounts      Account[]
+  Employee      Employee?
+  sessions      Session[]
+  likedBukets   Buket[]   @relation("BuketToUser")
+}
+
+model Employee {
+  id      String @id @default(uuid())
+  userId  String @unique
+  storeId Int
+  role    Role
+  store   Store  @relation(fields: [storeId], references: [id])
+  user    User   @relation(fields: [userId], references: [id])
+}
+
+model VerificationToken {
+  identifier String
+  token      String   @unique
+  expires    DateTime
+
+  @@unique([identifier, token])
+}
+
+enum Role {
+  OWNER
+  MANAGER
+  FLORIST
+}

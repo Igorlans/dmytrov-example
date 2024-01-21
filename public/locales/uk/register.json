@@ -1,0 +1,23 @@
+{
+    "title": "Реєстрація",
+    "personalInfo": "Особисті данні",
+    "name": "Ім'я",
+    "surname": "Прізвище",
+    "byFuther": "По-батькові",
+    "phone": "Моб. номер телефону",
+    "repeatEmail": "Повторити",
+    "passord": "Пароль для входу",
+    "repeatPassord": "Підтвердіть пароль",
+    "passords": "Паролі",
+
+    "passordErrorMsg": "Пароль має містити не менше 6 символів",
+    "nameErrorMsg": "має містити тільки букви",
+    "surnameErrorMsg": "має містити тільки букви",
+    "emailErrorMsg": "Введіть коректний email",
+
+    "required": "обов'язкове",
+    "required2": "обов'язковий",
+    "required3": "обов'язкове",
+    "notMatch": "не співпадають",
+    "needRepeat": "Потрібно повторити"
+}

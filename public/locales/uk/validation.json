@@ -1,0 +1,32 @@
+{
+    "error": "Помилка",
+    "requiredLine": "Поле обов'язкове",
+    "wrongFormat": "Неправильний формат",
+    "wrongFormatLenght": "Код має містити мінімум 8 символів",
+    
+    "userNotFound": "Користувача з таким email не існує",
+    "userEditLoading": "Редагування користувача",
+    "userEditSuccess": "Користувача відредаговано",
+    "userEditError": "Помилка редагування користувача",
+    "sendCode": "Код підтвердження відправлено на пошту",
+    
+    "checkingCode": "Перевіряємо код",
+    "checkingSuccess": "Успіх! Тепер ви можете змінити пароль",
+    "checkingCodeError": "Невірний код підтвердження",
+
+    "passwordChanging": "Зміна паролю",
+    "passwordChangingSuccess": "Пароль змінено",
+    "passwordChangingError": "Помилка зміни паролю",
+
+    "passwordMatch": "Паролі мають співпадати",
+
+    "userLogOutSuccess": "Ви вийшли з облікового запису",
+    "loginSuccess": "Вхід успішний",
+
+    "orderCreating": "Створення заявки",
+    "orderCreatingSuccess": "Заявку створено",
+    "orderCreatingError": "Потрібно погодитись з політикою конфіденційності",
+
+    "thanksForReview": "Дякуємо за відгук",
+    "reviewSaving": "Збереження відгуку"
+}

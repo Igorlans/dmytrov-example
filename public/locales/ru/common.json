@@ -1,0 +1,49 @@
+{
+  "allQuestionsButton": "Все вопросы",
+  "blog": "Блог",
+  "calculateCost": "Рассчитать стоимость",
+  "calculateTrueCost": "Просчитать оптимальную стоимость",
+  "footerConfidentiality": "Политика конфиденциальности",
+  "footerContact": "Контакт",
+  "footerContacts": "Контакты",
+  "footerRightsReserved": "Все права защищены",
+  "haveQuestionButton": "Есть вопросы?",
+  "navItemHome": "Главная",
+  "orderProjectButton": "Заказать проект",
+  "questions": "Вопросы и ответы",
+  "services": "Услуги",
+  "servicesDesign": "Дизайн-проект",
+  "servicesProject": "Технический проект",
+  "servicesSupervision": "Авторский надзор",
+  "viewButton": "Посмотреть",
+  "viewExampleButton": "Посмотреть пример",
+  "readMore": "Читать далее",
+  "nextStepButton": "Далее",
+  "prevStepButton": "Назад",
+  "createOrder": "Создать заявку",
+
+  "droverTitle": "Вход в личный кабинет",
+  "droverCreateAccount": "Еще не имеете учетной записи?",
+  "droverForgotPassword": "Забыли пароль?",
+  "droverLogin": "Вход",
+
+  "changePasswordButton": "Изменить пароль",
+  "logOutButton": "Выйти",
+  "sendButton": "Отправить",
+
+  "h1mainPage": "Разработка технического и дизайн-проекта",
+
+  "toHomePage": "Вернуться на главную",
+  "getService": "Заказать услугу",
+
+  "price": "Стоимость",
+
+  "tariffsSectionTitle": "Тарифы",
+
+  "more": "Подробнее",
+  "rates": "оценок",
+  "yes": "Да",
+  "no": "Нет",
+
+  "additionalServices": "Дополнительные услуги"
+}
